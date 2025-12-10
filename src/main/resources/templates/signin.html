@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Connexion</title>
+    <!-- CSS depuis /static/css/ -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+</head>
+
+<body class="signup-form">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 col-xl-9 mx-auto">
+            <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+
+                <div class="card-img-left d-none d-md-flex">
+                    <!-- Illustration à gauche -->
+                </div>
+
+                <div class="card-body p-4 p-sm-5">
+
+                    <div class="logo-card text-center mb-4">
+                        <img class="logo" th:src="@{/images/flashcashlogo.png}" alt="Logo"/>
+                    </div>
+
+                    <!-- FORMULAIRE DE LOGIN -->
+                    <form th:action="@{/signin}" method="post">
+
+                        <div class="form-floating mb-3">
+                            <input type="email" name="username" class="form-control" id="email" placeholder="Email" required/>
+                            <label for="email">Email</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="password" name="password" class="form-control" id="password" placeholder="Mot de passe" required/>
+                            <label for="password">Mot de passe</label>
+                        </div>
+
+                        <div class="d-grid mb-2">
+                            <button class="btn btn-lg btn-primary fw-bold text-uppercase" type="submit">Se connecter</button>
+                        </div>
+
+                        <a class="d-block text-center mt-2 small" th:href="@{/signup}">
+                            Pas encore de compte ? Inscrivez-vous
+                        </a>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

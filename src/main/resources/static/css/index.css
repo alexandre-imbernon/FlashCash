@@ -1,0 +1,78 @@
+/* index.css */
+
+/* Fond général */
+body.signup-form {
+    background-color: #0A742B;
+    font-family: Arial, sans-serif;
+}
+
+/* Carte du formulaire */
+.signup-form .card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    background-color: #ffffff; /* blanc pour contraste */
+}
+
+/* Logo */
+.signup-form .logo-card img.logo {
+    max-width: 120px;
+}
+
+/* Titres */
+.signup-form h4.card-title {
+    color: #0A742B;
+}
+
+/* Inputs */
+.signup-form .form-control {
+    border: 1px solid #A0E816;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.signup-form .form-control:focus {
+    border-color: #0A742B;
+    box-shadow: 0 0 8px #A0E816;
+}
+
+/* Labels */
+.signup-form label {
+    color: #0A742B;
+}
+
+/* Bouton */
+.signup-form .btn-primary {
+    background-color: #0A742B;
+    border-color: #0A742B;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.signup-form .btn-primary:hover {
+    background-color: #A0E816;
+    color: #0A742B;
+    border-color: #A0E816;
+}
+
+/* Lien */
+.signup-form a {
+    color: #A0E816;
+    text-decoration: none;
+}
+
+.signup-form a:hover {
+    color: rgba(160, 232, 22, 0.42);
+}
+
+.logo-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 200px;        /* taille réelle */
+    height: auto !important;
+    max-width: none !important;
+}
