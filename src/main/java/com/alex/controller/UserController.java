@@ -2,10 +2,9 @@ package com.alex.controller;
 
 import com.alex.model.Transfer;
 import com.alex.model.User;
-import com.alex.service.LinkService;
-import com.alex.service.UserService;
 import com.alex.service.TransferService;
 import com.alex.service.SessionService;
+import com.alex.service.UserService;
 import com.alex.form.SignUpForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,20 +18,16 @@ import java.util.List;
 @Controller
 public class UserController {
 
-    private final LinkService linkService;
+    private final SessionService sessionService;
     private final UserService userService;
     private final TransferService transferService;
-    private final SessionService sessionService;
 
-    public UserController(LinkService linkService,
+    public UserController(SessionService sessionService,
                           UserService userService,
-                          TransferService transferService,
-                          SessionService sessionService) {
-
-        this.linkService = linkService;
+                          TransferService transferService) {
+        this.sessionService = sessionService;
         this.userService = userService;
         this.transferService = transferService;
-        this.sessionService = sessionService;
     }
 
     // --- Page d'accueil, accessible après login ---
@@ -48,26 +43,42 @@ public class UserController {
         List<Transfer> transactions = transferService.findTransactions();
         model.addAttribute("transfers", transactions);
 
-        return new ModelAndView("index"); // renvoie index.html
+        return new ModelAndView("index");
+    }
+
+    // --- Page profil utilisateur ---
+    @GetMapping("/profile")
+    public String profilePage(Model model) {
+        User user = sessionService.sessionUser();
+        if (user == null) {
+            return "redirect:/signin";
+        }
+
+        model.addAttribute("user", user);
+
+        List<Transfer> transactions = transferService.findTransactionsByUser(user);
+        model.addAttribute("transfers", transactions);
+
+        return "profile";
     }
 
     // --- GET formulaire d'inscription ---
     @GetMapping("/signup")
     public ModelAndView showSignUpForm(Model model) {
         model.addAttribute("signUpForm", new SignUpForm());
-        return new ModelAndView("signup");  // signup.html
-    }
-
-    // --- GET formulaire de connexion ---
-    @GetMapping("/signin")
-    public String showLoginForm() {
-        return "signin"; // signin.html
+        return new ModelAndView("signup");
     }
 
     // --- POST inscription ---
     @PostMapping("/signup")
     public String processSignUp(@ModelAttribute("signUpForm") SignUpForm form) {
         userService.registration(form);
-        return "redirect:/signin"; // redirige vers login après inscription
+        return "redirect:/signin";
+    }
+
+    // --- GET formulaire de connexion ---
+    @GetMapping("/signin")
+    public String showLoginForm() {
+        return "signin";
     }
 }

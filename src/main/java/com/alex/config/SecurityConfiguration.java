@@ -27,7 +27,7 @@ public class SecurityConfiguration {
                 .formLogin(form -> form
                         .loginPage("/signin")            // page GET pour login
                         .loginProcessingUrl("/signin")   // POST form action
-                        .defaultSuccessUrl("/", true)    // redirection après login
+                        .defaultSuccessUrl("/profile", true)    // redirection après login
                         .permitAll()
                 )
                 .logout(logout -> logout.permitAll())

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Profile</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/profile.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+
+    <!-- Navbar simple -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+        <a class="navbar-brand" th:href="@{/}">
+            <img th:src="@{/images/flashcashlogo.png}" alt="Flash Cash" class="navbar-logo">
+        </a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/transfers}">Transfers</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/profile}">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/contact}">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Sign out</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-- Cartes d’action -->
+    <div class="row mb-5">
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 shadow">
+                <div class="card-header bg-primary text-white text-center">Add cash to Flash Cash</div>
+                <div class="card-body text-center">
+                    <p>Add cash with your credit card<br>Free<br>Instant deposit<br>Fully secured</p>
+                    <a href="#" class="btn btn-outline-primary">Start</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 shadow">
+                <div class="card-header bg-primary text-white text-center">Transfer to your bank</div>
+                <div class="card-body text-center">
+                    <p>Instant transfer<br>Free<br>Worldwide<br>Fully secured</p>
+                    <a href="#" class="btn btn-outline-primary">Start</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 shadow">
+                <div class="card-header bg-primary text-white text-center">Add an IBAN</div>
+                <div class="card-body text-center">
+                    <p>Add your IBAN here<br>Up to 5 IBAN<br>Any bank supported<br>Fully secured</p>
+                    <a href="#" class="btn btn-outline-primary">Start</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Solde du compte -->
+    <h3 class="row justify-content-center align-items-center">My account balance</h3>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>User</th>
+            <th>Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="t : ${transfers}">
+            <td th:text="${t.user.email}"></td>
+            <td th:text="${t.amount}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<!-- Footer simple -->
+<footer class="bg-light text-dark">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4 text-center">
+                <h6 class="text-uppercase fw-bold">Cash transfer</h6>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-dark text-decoration-none">FAQ</a></li>
+                    <li><a href="#" class="text-dark text-decoration-none">Why using Flash Cash?</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4 text-center">
+                <h6 class="text-uppercase fw-bold">Need help?</h6>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-dark text-decoration-none">Live chat</a></li>
+                    <li><a href="#" class="text-dark text-decoration-none">Contact us</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4 text-center">
+                <h6 class="text-uppercase fw-bold">About</h6>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-dark text-decoration-none">Team</a></li>
+                    <li><a href="#" class="text-dark text-decoration-none">Locations</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+

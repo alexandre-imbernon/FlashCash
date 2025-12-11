@@ -1,0 +1,124 @@
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body.profile-page {
+    background-color: #0A742B;
+    font-family: Arial, sans-serif;
+    color: #0A742B;
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar {
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+    color: #0A742B !important;
+    font-weight: bold;
+}
+
+.navbar .nav-link:hover {
+    color: #A0E816 !important;
+}
+
+/* Logo dans la navbar */
+.navbar-logo {
+    height: 40px;
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.card {
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: #0A742B !important;
+    color: #0A742B;
+    font-weight: bold;
+    text-align: center;
+}
+
+.card-body p {
+    color: #0A742B;
+    margin-bottom: 15px;
+}
+
+.card-body .btn-outline-primary {
+    border-color: #0A742B;
+    color: #0A742B;
+    transition: all 0.3s ease;
+}
+
+.card-body .btn-outline-primary:hover {
+    background-color: #A0E816;
+    border-color: #A0E816;
+    color: #0A742B;
+}
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+
+table {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+table th {
+    background-color: #0A742B;
+    color: #FFFFFF;
+}
+
+table td {
+    color: #0A742B;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    background-color: #0A742B;
+    color: #0A742B;
+    border-radius: 12px;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+    padding: 0.25rem 1rem;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .card-body p {
+        font-size: 0.9rem;
+    }
+
+    table th,
+    table td {
+        font-size: 0.85rem;
+    }
+}
