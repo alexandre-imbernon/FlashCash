@@ -17,7 +17,6 @@
         </a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/transfers}">Transfers</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/profile}">Profile</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/contact}">Contact</a></li>
@@ -26,9 +25,15 @@
         </div>
     </nav>
 
+    <!-- Message de bienvenue -->
+    <div class="row mb-4">
+        <div class="col text-center">
+            <h4>Hello, <span th:text="${user.firstName}"></span></h4>
+        </div>
+    </div>
 
     <!-- Cartes d’action -->
-    <div class="row mb-5">
+    <div class="row mb-2">
         <div class="col-md-4 mb-3">
             <div class="card h-100 shadow">
                 <div class="card-header bg-primary text-white text-center">Add cash to Flash Cash</div>
@@ -61,30 +66,35 @@
     </div>
 
     <!-- Solde du compte -->
-    <h3 class="row justify-content-center align-items-center">My account balance</h3>
-    <table class="table table-bordered">
+    <div class="row mb-4">
+        <div class="col text-center">
+            <h3>Account Balance</h3>
+        </div>
+    </div>
+    <table class="table table-bordered text-center mb-5">
         <thead>
         <tr>
-            <th>User</th>
-            <th>Amount</th>
+            <th class="fs-5">User</th>
+            <th class="fs-5">Amount</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="t : ${transfers}">
-            <td th:text="${t.user.email}"></td>
-            <td th:text="${t.amount}"></td>
+            <td class="fw-semibold text-dark" th:text="${t.user.email}"></td>
+            <td th:text="${t.amount}"
+                th:classappend="${t.amount < 0} ? 'text-danger fw-bold' : 'text-success fw-bold'">
+            </td>
         </tr>
         </tbody>
     </table>
-
 </div>
 
-<!-- Footer simple -->
-<footer class="bg-light text-dark">
+<!-- Footer -->
+<footer class="bg-light text-dark border-top py-2">
     <div class="container">
-        <div class="row justify-content-center align-items-center">
+        <div class="row text-center">
 
-            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4 text-center">
+            <div class="col-md-4 mb-1">
                 <h6 class="text-uppercase fw-bold">Cash transfer</h6>
                 <ul class="list-unstyled">
                     <li><a href="#" class="text-dark text-decoration-none">FAQ</a></li>
@@ -92,7 +102,7 @@
                 </ul>
             </div>
 
-            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4 text-center">
+            <div class="col-md-4 mb-1">
                 <h6 class="text-uppercase fw-bold">Need help?</h6>
                 <ul class="list-unstyled">
                     <li><a href="#" class="text-dark text-decoration-none">Live chat</a></li>
@@ -100,7 +110,7 @@
                 </ul>
             </div>
 
-            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4 text-center">
+            <div class="col-md-4 mb-1">
                 <h6 class="text-uppercase fw-bold">About</h6>
                 <ul class="list-unstyled">
                     <li><a href="#" class="text-dark text-decoration-none">Team</a></li>
@@ -109,7 +119,14 @@
             </div>
 
         </div>
+
+        <div>
+            <div class="col text-center">
+                <small class="text-muted">© 2025 Flash Cash. All rights reserved.</small>
+            </div>
+        </div>
     </div>
 </footer>
+
 
 
